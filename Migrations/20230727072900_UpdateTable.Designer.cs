@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuanLyGhiDanh.Data;
 
@@ -11,9 +12,11 @@ using QuanLyGhiDanh.Data;
 namespace QuanLyGhiDanh.Migrations
 {
     [DbContext(typeof(QuanLyGhiDanhContext))]
-    partial class QuanLyGhiDanhContextModelSnapshot : ModelSnapshot
+    [Migration("20230727072900_UpdateTable")]
+    partial class UpdateTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -229,104 +232,6 @@ namespace QuanLyGhiDanh.Migrations
                     b.HasKey("Idhocvien");
 
                     b.ToTable("Hocvien");
-                });
-
-            modelBuilder.Entity("QuanLyGhiDanh.Data.Khoahoc", b =>
-                {
-                    b.Property<int>("Idkhoahoc")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idkhoahoc"));
-
-                    b.Property<string>("Tenkhoahoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idkhoahoc");
-
-                    b.ToTable("Khoahoc");
-                });
-
-            modelBuilder.Entity("QuanLyGhiDanh.Data.Lophoc", b =>
-                {
-                    b.Property<int>("Idlophoc")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idlophoc"));
-
-                    b.Property<string>("Batdauketthuc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Giangvienphutrach")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Giohoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Hocphi")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Monhoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ngayhoc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tenlop")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idlophoc");
-
-                    b.ToTable("Lophoc");
-                });
-
-            modelBuilder.Entity("QuanLyGhiDanh.Data.Monhoc", b =>
-                {
-                    b.Property<int>("Idmonhoc")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idmonhoc"));
-
-                    b.Property<string>("Khoa")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tenmon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tobomon")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idmonhoc");
-
-                    b.ToTable("Monhoc");
-                });
-
-            modelBuilder.Entity("QuanLyGhiDanh.Data.Tobomon", b =>
-                {
-                    b.Property<int>("Idtobomon")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idtobomon"));
-
-                    b.Property<string>("TenToBoMon")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idtobomon");
-
-                    b.ToTable("Tobomon");
                 });
 
             modelBuilder.Entity("QuanLyGhiDanh.Data.User", b =>

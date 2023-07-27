@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace QuanLyGhiDanh.Data
 {
-    [Table ("Hocvien")]
+    [Table("Hocvien")]
     public class Hocvien
     {
         [Key] public int Idhocvien { get; set; }

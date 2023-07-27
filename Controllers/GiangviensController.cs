@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuanLyGhiDanh.Data;
@@ -25,10 +20,10 @@ namespace QuanLyGhiDanh.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Giangvien>>> GetGiangviens()
         {
-          if (_context.Giangviens == null)
-          {
-              return NotFound();
-          }
+            if (_context.Giangviens == null)
+            {
+                return NotFound();
+            }
             return await _context.Giangviens.ToListAsync();
         }
 
@@ -36,10 +31,10 @@ namespace QuanLyGhiDanh.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Giangvien>> GetGiangvien(int id)
         {
-          if (_context.Giangviens == null)
-          {
-              return NotFound();
-          }
+            if (_context.Giangviens == null)
+            {
+                return NotFound();
+            }
             var giangvien = await _context.Giangviens.FindAsync(id);
 
             if (giangvien == null)
@@ -53,7 +48,6 @@ namespace QuanLyGhiDanh.Controllers
         // PUT: api/Giangviens/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize]
         public async Task<IActionResult> PutGiangvien(int id, Giangvien giangvien)
         {
             if (id != giangvien.Idgiangvien)
@@ -85,13 +79,12 @@ namespace QuanLyGhiDanh.Controllers
         // POST: api/Giangviens
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
         public async Task<ActionResult<Giangvien>> PostGiangvien(Giangvien giangvien)
         {
-          if (_context.Giangviens == null)
-          {
-              return Problem("Entity set 'QuanLyGhiDanhContext.Giangviens'  is null.");
-          }
+            if (_context.Giangviens == null)
+            {
+                return Problem("Entity set 'QuanLyGhiDanhContext.Giangviens'  is null.");
+            }
             _context.Giangviens.Add(giangvien);
             await _context.SaveChangesAsync();
 
@@ -100,7 +93,6 @@ namespace QuanLyGhiDanh.Controllers
 
         // DELETE: api/Giangviens/5
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> DeleteGiangvien(int id)
         {
             if (_context.Giangviens == null)

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QuanLyGhiDanh.Data;
 
@@ -11,9 +12,11 @@ using QuanLyGhiDanh.Data;
 namespace QuanLyGhiDanh.Migrations
 {
     [DbContext(typeof(QuanLyGhiDanhContext))]
-    partial class QuanLyGhiDanhContextModelSnapshot : ModelSnapshot
+    [Migration("20230727073535_UpdateTable1")]
+    partial class UpdateTable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,22 +314,6 @@ namespace QuanLyGhiDanh.Migrations
                     b.HasKey("Idmonhoc");
 
                     b.ToTable("Monhoc");
-                });
-
-            modelBuilder.Entity("QuanLyGhiDanh.Data.Tobomon", b =>
-                {
-                    b.Property<int>("Idtobomon")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Idtobomon"));
-
-                    b.Property<string>("TenToBoMon")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Idtobomon");
-
-                    b.ToTable("Tobomon");
                 });
 
             modelBuilder.Entity("QuanLyGhiDanh.Data.User", b =>
