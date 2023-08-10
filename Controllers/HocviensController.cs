@@ -48,6 +48,7 @@ namespace QuanLyGhiDanh.Controllers
         // PUT: api/Hocviens/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutHocvien(int id, Hocvien hocvien)
         {
             if (id != hocvien.Idhocvien)
@@ -79,6 +80,7 @@ namespace QuanLyGhiDanh.Controllers
         // POST: api/Hocviens
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Hocvien>> PostHocvien(Hocvien hocvien)
         {
             if (_context.Hocviens == null)
@@ -93,6 +95,7 @@ namespace QuanLyGhiDanh.Controllers
 
         // DELETE: api/Hocviens/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteHocvien(int id)
         {
             if (_context.Hocviens == null)

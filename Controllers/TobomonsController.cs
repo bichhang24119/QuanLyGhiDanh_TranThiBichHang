@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ namespace QuanLyGhiDanh.Controllers
         // PUT: api/Tobomons/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutTobomon(int id, Tobomon tobomon)
         {
             if (id != tobomon.Idtobomon)
@@ -83,6 +85,7 @@ namespace QuanLyGhiDanh.Controllers
         // POST: api/Tobomons
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Tobomon>> PostTobomon(Tobomon tobomon)
         {
           if (_context.Tobomon == null)
@@ -97,6 +100,7 @@ namespace QuanLyGhiDanh.Controllers
 
         // DELETE: api/Tobomons/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteTobomon(int id)
         {
             if (_context.Tobomon == null)

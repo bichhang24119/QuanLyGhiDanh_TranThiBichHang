@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ namespace QuanLyGhiDanh.Controllers
         // PUT: api/Monhocs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutMonhoc(int id, Monhoc monhoc)
         {
             if (id != monhoc.Idmonhoc)
@@ -83,6 +85,7 @@ namespace QuanLyGhiDanh.Controllers
         // POST: api/Monhocs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Monhoc>> PostMonhoc(Monhoc monhoc)
         {
           if (_context.Monhoc == null)
@@ -97,6 +100,7 @@ namespace QuanLyGhiDanh.Controllers
 
         // DELETE: api/Monhocs/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteMonhoc(int id)
         {
             if (_context.Monhoc == null)

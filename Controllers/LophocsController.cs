@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +53,7 @@ namespace QuanLyGhiDanh.Controllers
         // PUT: api/Lophocs/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutLophoc(int id, Lophoc lophoc)
         {
             if (id != lophoc.Idlophoc)
@@ -83,6 +85,7 @@ namespace QuanLyGhiDanh.Controllers
         // POST: api/Lophocs
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<Lophoc>> PostLophoc(Lophoc lophoc)
         {
           if (_context.Lophoc == null)
@@ -97,6 +100,7 @@ namespace QuanLyGhiDanh.Controllers
 
         // DELETE: api/Lophocs/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteLophoc(int id)
         {
             if (_context.Lophoc == null)
